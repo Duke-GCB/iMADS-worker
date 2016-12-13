@@ -1,7 +1,5 @@
 cwlVersion: v1.0
 class: Workflow
-requirements:
-  - class: ScatterFeatureRequirement
 inputs:
   # Predictions
   sequence: File
@@ -26,8 +24,6 @@ outputs:
 steps:
   predict1:
     run: predict-tf-binding.cwl
-    scatter: [model, core]
-    scatterMethod: dotproduct
     in:
       sequence: sequence
       model: models1
@@ -40,8 +36,6 @@ steps:
     out: [predictions]
   predict2:
     run: predict-tf-binding.cwl
-    scatter: [model, core]
-    scatterMethod: dotproduct
     in:
       sequence: sequence
       model: models2

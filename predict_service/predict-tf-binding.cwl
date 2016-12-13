@@ -16,11 +16,11 @@ inputs:
       itemSeparator: " "
       separate: true
   model:
-    type: File
+    type: File[]
     inputBinding:
       prefix: -m
   core:
-    type: string
+    type: string[]
     inputBinding:
       prefix: -c
   width:
@@ -50,13 +50,8 @@ inputs:
     type: int?
     inputBinding:
       prefix: --core-start
-  output_filename:
-    type: string
-    default: "predictions.bed"
-    inputBinding:
-      prefix: -o
 outputs:
   predictions:
-    type: File
+    type: File[]
     outputBinding:
-      glob: $(inputs.output_filename)
+      glob: "predict_output_*.bed"
