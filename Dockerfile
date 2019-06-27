@@ -2,7 +2,6 @@ FROM ubuntu:xenial
 MAINTAINER "Dan Leehr" dan.leehr@duke.edu
 
 RUN apt-get update && apt-get install -y \
-  vim \
   git \
   python3 python3-pip \
   r-base
@@ -37,7 +36,7 @@ RUN cp /opt/libsvm-${LIBSVM_VER}/python/*.py /usr/local/lib/python2.7/dist-packa
 ### Step 3: Install Predict-TF-Binding from GitHub
 WORKDIR /opt/
 RUN git clone https://github.com/Duke-GCB/Predict-TF-Binding.git predict-tf-binding
-RUN pip3 install -r /opt/predict-tf-binding/requirements.txt
+RUN pip install -r /opt/predict-tf-binding/requirements.txt
 ENV PATH /opt/predict-tf-binding/:$PATH
 
 ### Step 4: Install Predict-TF-Preference from GitHub
