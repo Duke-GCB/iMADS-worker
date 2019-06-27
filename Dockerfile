@@ -3,7 +3,7 @@ MAINTAINER "Dan Leehr" dan.leehr@duke.edu
 
 RUN apt-get update && apt-get install -y \
   git \
-  python3 python3-pip \
+  python3 python3-pip python-pip\
   r-base
 
 ### Step 1: Install the worker and its dependencies
