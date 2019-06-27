@@ -88,7 +88,7 @@ class PredictionsClient(object):
     @staticmethod
     def write_data(data, filename):
         with open(filename, 'w') as f:
-            f.write(data.encode('utf-8'))
+            f.write(data)
 
     @staticmethod
     def read_data(filename):
