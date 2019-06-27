@@ -93,7 +93,7 @@ class PredictionsClient(object):
     @staticmethod
     def read_data(filename):
         with open(filename, 'r') as f:
-            return f.read().decode('utf-8')
+            return f.read()
 
     def make_predictions(self, job):
         # Write the fasta data to a local file
