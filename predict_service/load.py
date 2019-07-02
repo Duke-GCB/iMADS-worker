@@ -34,7 +34,7 @@ class ConfigLoader:
         we only return the first
         """
         with open(self.metadata_file_name, 'r') as metadata_file:
-            configs = yaml.load(metadata_file)
+            configs = yaml.safe_load(metadata_file)
             matching_configs = [c for c in configs if c[ConfigLoader.model_id_key] == self.model_id]
             if matching_configs:
                 return matching_configs[0]

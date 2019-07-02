@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from __future__ import print_function
 import requests
@@ -74,7 +74,7 @@ class PredictionsClient(object):
         r = requests.get(url, auth=self._make_auth())
         r.raise_for_status()
         data = r.json()['data']
-        return base64.b64decode(data)
+        return base64.b64decode(data).decode('utf-8')
 
     def save_custom_predictions(self, job, bed_file_data):
         url = self.make_url("custom_predictions")
@@ -117,7 +117,7 @@ class PredictionsClient(object):
         print('Starting predictions\n{}'.format(job))
         bed_file_data = self.make_predictions(job)
         print('Saving predictions for job with id {}:\n{}\n...'.format(job['id'], bed_file_data[:50]))
-        self.save_custom_predictions(job, base64.b64encode(bed_file_data))
+        self.save_custom_predictions(job, base64.b64encode(bed_file_data.encode('utf-8')).decode('utf-8'))
         print('Completing job with id {}'.format(job['id']))
         self.mark_job_complete(job)
         print('Completed job with id {}'.format(job['id']))

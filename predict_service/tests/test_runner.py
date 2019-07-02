@@ -49,7 +49,7 @@ class PredictionRunnerTestCase(TestCase):
     def test_runs_cwltool_gets_output(self, mock_cwl_main):
         p = PredictionRunner(self.sequence, self.model, self.config, self.models_dir, self.output_dir)
         def side_effect(args, stdout, stderr):
-          print >>stdout, '{"predictions":{"path": "/preds.bed","class": "File","size": 124}}'
+          print('{"predictions":{"path": "/preds.bed","class": "File","size": 124}}', file=stdout)
           return 0
         mock_cwl_main.side_effect = side_effect
         result = p.run()
@@ -60,7 +60,7 @@ class PredictionRunnerTestCase(TestCase):
     def test_handles_cwltool_failures(self, mock_cwl_main):
         p = PredictionRunner(self.sequence, self.model, self.config, self.models_dir, self.output_dir)
         def side_effect(args, stdout, stderr):
-          print >>stderr, 'error in cwl_main'
+          print('error in cwl_main', file=stderr)
           return 1
         mock_cwl_main.side_effect = side_effect
         with self.assertRaises(RunnerException):

@@ -2,10 +2,10 @@ import datetime
 
 import json
 import os
-import StringIO
-from cwljob import PredictionsCwlJobGenerator, PreferencesCwlJobGenerator
+from io import StringIO
+from predict_service.cwljob import PredictionsCwlJobGenerator, PreferencesCwlJobGenerator
 from cwltool.main import main as cwl_main
-from load import ConfigLoader
+from predict_service.load import ConfigLoader
 
 
 def timestamp(fmt='%Y-%m-%d_%H-%M-%S'):
@@ -179,7 +179,7 @@ class PredictionRunner:
         # Despite having to capture JSON output written to stdout and furnish
         # command-line arguments in a list for argparse to parse,
         # this is still simpler than the internal building blocks
-        out, err = StringIO.StringIO(), StringIO.StringIO()
+        out, err = StringIO(), StringIO()
         argsl = ['--no-container', '--outdir', self.output_directory]
         argsl.extend([self.workflow, self.order_file_path])
         rc = cwl_main(argsl, stdout=out, stderr=err)

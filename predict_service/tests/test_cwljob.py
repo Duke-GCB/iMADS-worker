@@ -15,7 +15,7 @@ class CwlJobGeneratorTestCase(TestCase):
 
     def test_writes_json(self):
         g = PredictionsCwlJobGenerator(test_data.CONFIG_2X2, 'seq.fa', '/models')
-        output_file = tempfile.NamedTemporaryFile()
+        output_file = tempfile.NamedTemporaryFile("w", encoding="utf8")
         self.assertEqual(output_file.tell(), 0)
         g.write_json(output_file)
         self.assertNotEqual(output_file.tell(), 0, 'write_json should have written to the file')
