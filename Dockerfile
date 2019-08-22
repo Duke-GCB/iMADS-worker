@@ -1,9 +1,8 @@
-FROM ubuntu:xenial
+FROM python:3.7
 LABEL maintainer="dan.leehr@duke.edu"
 
 RUN apt-get update && apt-get install -y \
   git \
-  python3 python3-pip\
   r-base
 
 ### Step 1: Install the worker and its dependencies
