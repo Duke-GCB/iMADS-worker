@@ -15,13 +15,13 @@ ENV PATH /opt/tf-predictions-worker/:$PATH
 
 ### Step 3: Install Predict-TF-Binding from GitHub
 WORKDIR /opt/
-RUN git clone -b python3 https://github.com/Duke-GCB/Predict-TF-Binding.git predict-tf-binding
+RUN git clone https://github.com/Duke-GCB/Predict-TF-Binding.git predict-tf-binding
 RUN pip3 install -r /opt/predict-tf-binding/requirements.txt
 ENV PATH /opt/predict-tf-binding/:$PATH
 
 ### Step 4: Install Predict-TF-Preference from GitHub
 WORKDIR /opt/
-RUN git clone -b python3 https://github.com/Duke-GCB/Predict-TF-Preference.git predict-tf-preference
+RUN git clone https://github.com/Duke-GCB/Predict-TF-Preference.git predict-tf-preference
 ENV PATH /opt/predict-tf-preference/:$PATH
 
 # Switch to non-root user
